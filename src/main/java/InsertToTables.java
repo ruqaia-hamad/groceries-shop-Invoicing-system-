@@ -53,7 +53,7 @@ public class InsertToTables {
 		System.out.print("Enter the Customer name:");
 		String CustomerName = br.readLine();
 		System.out.print("Enter the Customer phone:");
-		Integer PhoneNumber = br.read();
+		String PhoneNumber = br.readLine();
 		String sql = "INSERT INTO Customer (CustomerName, PhoneNumber) VALUES (?, ?)";
 
 		Connection con = null;
@@ -66,7 +66,7 @@ public class InsertToTables {
 			con = DriverManager.getConnection(url, user, pass);
 			PreparedStatement statement = con.prepareStatement(sql);
 			statement.setString(1, CustomerName);
-			statement.setInt(2, PhoneNumber);
+			statement.setString(2, PhoneNumber);
 
 			statement.executeUpdate();
 			System.out.println("Inserted Successfly");
@@ -84,7 +84,7 @@ public class InsertToTables {
 		System.out.print("Enter the Item Description:");
 		String ItemDescription = br.readLine();
 		System.out.print("Enter Quantity: ");
-		Integer Quantity = br.read();
+		int Quantity = br.read();
 		System.out.print("Enter Unit Price: ");
 		double unitPrice = sc.nextDouble();
 
@@ -119,9 +119,9 @@ public class InsertToTables {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("Enter the Item ID:");
-		Integer ItemID = br.read();
+		int ItemID = br.read();
 		System.out.print("Enter Invoice ID :");
-		Integer InvoiceID = br.read();
+		int InvoiceID = br.read();
 
 		String sql = "INSERT INTO  InvoiceItem (ItemID,InvoiceID) VALUES (?,?)";
 
@@ -186,7 +186,7 @@ public class InsertToTables {
 		System.out.print("Enter the Website:");
 		String Website = br.readLine();
 		System.out.print("Enter the Shop ID:");
-		Integer ShopID = br.read();
+		int ShopID = sc.nextInt();
 
 		String sql = "INSERT INTO  InvoiceHeader(Tel,Fax,Email,Website,ShopID) VALUES (?,?,?,?,?)";
 

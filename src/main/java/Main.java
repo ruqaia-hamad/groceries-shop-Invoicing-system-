@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
@@ -25,7 +27,14 @@ public class Main {
 
 					switch (op) {
 					case 1:
-
+						BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+						System.out.print(" Please Enter the database connection URL :\n");
+						String url = br.readLine();
+						System.out.print(" Please user name :");
+						String user = br.readLine();
+						System.out.print(" Please user password :");
+						String pass = br.readLine();
+						InsertToTables.InsertToItem(url, user, pass);
 						break;
 
 					case 2:

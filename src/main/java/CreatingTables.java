@@ -7,14 +7,10 @@ public class CreatingTables {
 
 	public static void creatingInvoiceTable(String url, String user, String pass) {
 
-		String sql = "CREATE TABLE Invoice (\r\n"
-				+ "    InvoiceID int IDENTITY(1,1) PRIMARY KEY,\r\n"
-				+ "    CustomerID int NOT NULL,\r\n"
-				+ "    InvoiceHeaderID int NOT NULL,\r\n"
-				+ "    InvoiceDate date NOT NULL,\r\n"
-				+ "    TotalAmount decimal(18,2) NOT NULL,\r\n"
-				+ "    PaidAmount decimal(18,2) NOT NULL,\r\n"
-				+ "    Balance decimal(18,2) NOT NULL,\r\n"
+		String sql = "CREATE TABLE Invoice (\r\n" + "    InvoiceID int IDENTITY(1,1) PRIMARY KEY,\r\n"
+				+ "    CustomerID int NOT NULL,\r\n" + "    InvoiceHeaderID int NOT NULL,\r\n"
+				+ "    InvoiceDate date NOT NULL,\r\n" + "    TotalAmount decimal(18,2) NOT NULL,\r\n"
+				+ "    PaidAmount decimal(18,2) NOT NULL,\r\n" + "    Balance decimal(18,2) NOT NULL,\r\n"
 				+ "    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),\r\n"
 				+ "    FOREIGN KEY (InvoiceHeaderID) REFERENCES InvoiceHeader(InvoiceHeaderID))";
 
