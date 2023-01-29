@@ -7,7 +7,7 @@ public class Main {
     Scanner sc=new Scanner(System.in);
     boolean isExitMenu3 = true;
 	while (isExitMenu3) {
-		System.out.println("Please Choose Number From Menu:       \n");
+		System.out.println("Please Choose Number From Menu:      \n");
 		System.out.println(" ====================================================");
 		System.out.println("|  [1]Shop Settings                                  |");
 		System.out.println("|  [2]Manage Shop Items                              |");
