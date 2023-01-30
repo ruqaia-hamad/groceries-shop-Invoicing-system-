@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Throwable {
 		Scanner sc = new Scanner(System.in);
 		boolean isExitMenu3 = true;
 
 		while (isExitMenu3) {
+			DatabaseCredentials dbcredentials = new DatabaseCredentials();
 			for (String x : Menu.superMenuList()) {
 				System.out.println(x);
 			}
@@ -19,7 +20,7 @@ public class Main {
 			case 1:
 				boolean isExitMenu9 = true;
 				while (isExitMenu9) {
-
+				
 					for (String x : Menu.shopMenuList()) {
 						System.out.println(x);
 					}
@@ -27,21 +28,25 @@ public class Main {
 
 					switch (op) {
 					case 1:
-						BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-						System.out.print(" Please Enter the database connection URL :\n");
-						String url = br.readLine();
-						System.out.print(" Please user name :");
-						String user = br.readLine();
-						System.out.print(" Please user password :");
-						String pass = br.readLine();
-						InsertToTables.InsertToItem(url, user, pass);
+
+						Menu.loadData();
+
 						break;
 
 					case 2:
+					
+						InsertToTables.InsertToInvoiceHeader(dbcredentials.getUrl(), dbcredentials.getUser(),
+								dbcredentials.getPass());
 
 						break;
 
 					case 3:
+				
+						InsertToTables.InsertToInvoiceHeader(dbcredentials.getUrl(), dbcredentials.getUser(),
+								dbcredentials.getPass());
+
+						break;
+					case 4:
 						isExitMenu9 = false;
 
 						break;
@@ -56,20 +61,37 @@ public class Main {
 			case 2:
 				boolean isExitMenu4 = true;
 				while (isExitMenu4) {
+					
 					for (String x : Menu.itemMenuList()) {
 						System.out.println(x);
 					}
 					int op = sc.nextInt();
-
+					
 					switch (op) {
+		
 					case 1:
-
+					
+						InsertToTables.InsertToItem(dbcredentials.getUrl(), dbcredentials.getUser(),
+								dbcredentials.getPass());
 						break;
-
 					case 2:
-
+					
+						SqlQuries.updateItemPrice(dbcredentials.getUrl(), dbcredentials.getUser(),
+								dbcredentials.getPass());
 						break;
 					case 3:
+					
+						SqlQuries.updateItemPrice(dbcredentials.getUrl(), dbcredentials.getUser(),
+								dbcredentials.getPass());
+
+						break;
+					case 4:
+						
+						SqlQuries.reportItem(dbcredentials.getUrl(), dbcredentials.getUser(),
+								dbcredentials.getPass());
+
+						break;
+					case 5:
 						isExitMenu4 = false;
 
 						break;
@@ -81,9 +103,15 @@ public class Main {
 
 				break;
 
-			case 4:
-
+			case 3:
+				InsertToTables.insertToInvoice(dbcredentials.getUrl(), dbcredentials.getUser(),
+						dbcredentials.getPass());
 				break;
+			case 4: 
+				SqlQuries.reportStatistics(dbcredentials.getUrl(), dbcredentials.getUser(),
+						dbcredentials.getPass());
+				break;
+
 			case 5:
 
 				break;

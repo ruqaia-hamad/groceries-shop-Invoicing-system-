@@ -116,12 +116,11 @@ public class InsertToTables {
 	}
 
 	public static void InsertToInvoiceItem(String url, String user, String pass) throws Exception {
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the Item ID:");
-		int ItemID = br.read();
+		int ItemID = sc.nextInt();
 		System.out.print("Enter Invoice ID :");
-		int InvoiceID = br.read();
+		int InvoiceID = sc.nextInt();
 
 		String sql = "INSERT INTO  InvoiceItem (ItemID,InvoiceID) VALUES (?,?)";
 
