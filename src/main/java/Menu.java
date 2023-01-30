@@ -21,8 +21,8 @@ public class Menu {
 	}
 
 	public static List<String> itemMenuList() {
-		return Arrays.asList("Please Choose Number From Menu:\n", "[1]Add Items", "[2]Delete Items  ",
-				" [3]Change Item Price ", "Report All Items ", "[5]GO Back To Main Menu ");
+		return Arrays.asList("Please Choose Number From Menu:\n", "[1]Add Items", "[2]Delete Items",
+				"[3]Change Item Price", "[4]Report All Items", "[5]GO Back To Main Menu");
 
 	}
 
@@ -46,7 +46,6 @@ public class Menu {
 			DatabaseCredentials dbcredentials1 = new DatabaseCredentials();
 			InsertToTables.InsertToItem(dbcredentials1.getUrl(), dbcredentials1.getUser(), dbcredentials1.getPass());
 		}
-
 
 	}
 }

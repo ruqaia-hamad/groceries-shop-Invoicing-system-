@@ -10,16 +10,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		boolean isExitMenu3 = true;
 		DatabaseCredentials dbcredentials = new DatabaseCredentials();
-		Map<String, Integer> menuItems = new HashMap<>();
-		boolean run = true;
-
-		menuItems.put("Shop Settings", 0);
-		menuItems.put("Manage Shop Items", 0);
-		menuItems.put("Create New Invoice", 0);
-		menuItems.put("Report Statistics", 0);
-		menuItems.put("Report All Invoices", 0);
-		menuItems.put("Search Invoice", 0);
-		menuItems.put("Program Statistics", 0);
+		Map<String, Integer> menuItems = SqlQuries.initializeMenu();
 		while (isExitMenu3) {
 
 			for (String x : Menu.superMenuList()) {
