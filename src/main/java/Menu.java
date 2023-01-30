@@ -26,7 +26,7 @@ public class Menu {
 
 	}
 
-	public static void loadData() throws Exception {
+	public static void loadData(DatabaseCredentials dbCredentials) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		System.out.print(" Please Enter the table number to Load data:");
 		System.out.print("1- Customer Table:");
@@ -34,17 +34,14 @@ public class Menu {
 		System.out.print("3- Invoice Table:");
 		int choose = sc.nextInt();
 		if (choose == 1) {
-			DatabaseCredentials dbcredentials1 = new DatabaseCredentials();
-			InsertToTables.InsertToCustomer(dbcredentials1.getUrl(), dbcredentials1.getUser(),
-					dbcredentials1.getPass());
+			InsertToTables.InsertToCustomer(dbCredentials.getUrl(), dbCredentials.getUser(),
+					dbCredentials.getPass());
 		}
 		if (choose == 2) {
-			DatabaseCredentials dbcredentials1 = new DatabaseCredentials();
-			InsertToTables.InsertToItem(dbcredentials1.getUrl(), dbcredentials1.getUser(), dbcredentials1.getPass());
+			InsertToTables.InsertToItem(dbCredentials.getUrl(), dbCredentials.getUser(), dbCredentials.getPass());
 		}
 		if (choose == 3) {
-			DatabaseCredentials dbcredentials1 = new DatabaseCredentials();
-			InsertToTables.InsertToItem(dbcredentials1.getUrl(), dbcredentials1.getUser(), dbcredentials1.getPass());
+			InsertToTables.InsertToItem(dbCredentials.getUrl(), dbCredentials.getUser(), dbCredentials.getPass());
 		}
 
 	}

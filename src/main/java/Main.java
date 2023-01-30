@@ -9,7 +9,16 @@ public class Main {
 	public static void main(String[] args) throws Throwable {
 		Scanner sc = new Scanner(System.in);
 		boolean isExitMenu3 = true;
-		DatabaseCredentials dbcredentials = new DatabaseCredentials();
+		
+		DatabaseCredentials dbCredentials = new DatabaseCredentials();
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	    System.out.print(" Please Enter the database connection URL :\n");
+	    dbCredentials.setUrl(br.readLine());
+	    System.out.print(" Please user name :");
+	    dbCredentials.setUser(br.readLine());
+	    System.out.print(" Please user password :");
+	    dbCredentials.setPass(br.readLine());
+		
 		Map<String, Integer> menuItems = SqlQuries.initializeMenu();
 		while (isExitMenu3) {
 
@@ -34,21 +43,21 @@ public class Main {
 					switch (op) {
 					case 1:
 
-						Menu.loadData();
+						Menu.loadData(dbCredentials);
 
 						break;
 
 					case 2:
 
-						InsertToTables.InsertToInvoiceHeader(dbcredentials.getUrl(), dbcredentials.getUser(),
-								dbcredentials.getPass());
+						InsertToTables.InsertToInvoiceHeader(dbCredentials.getUrl(), dbCredentials.getUser(),
+								dbCredentials.getPass());
 
 						break;
 
 					case 3:
 
-						InsertToTables.InsertToInvoiceHeader(dbcredentials.getUrl(), dbcredentials.getUser(),
-								dbcredentials.getPass());
+						InsertToTables.InsertToInvoiceHeader(dbCredentials.getUrl(), dbCredentials.getUser(),
+								dbCredentials.getPass());
 
 						break;
 					case 4:
@@ -77,23 +86,23 @@ public class Main {
 
 					case 1:
 
-						InsertToTables.InsertToItem(dbcredentials.getUrl(), dbcredentials.getUser(),
-								dbcredentials.getPass());
+						InsertToTables.InsertToItem(dbCredentials.getUrl(), dbCredentials.getUser(),
+								dbCredentials.getPass());
 						break;
 					case 2:
 
-						SqlQuries.updateItemPrice(dbcredentials.getUrl(), dbcredentials.getUser(),
-								dbcredentials.getPass());
+						SqlQuries.updateItemPrice(dbCredentials.getUrl(), dbCredentials.getUser(),
+								dbCredentials.getPass());
 						break;
 					case 3:
 
-						SqlQuries.updateItemPrice(dbcredentials.getUrl(), dbcredentials.getUser(),
-								dbcredentials.getPass());
+						SqlQuries.updateItemPrice(dbCredentials.getUrl(), dbCredentials.getUser(),
+								dbCredentials.getPass());
 
 						break;
 					case 4:
 
-						SqlQuries.reportItem(dbcredentials.getUrl(), dbcredentials.getUser(), dbcredentials.getPass());
+						SqlQuries.reportItem(dbCredentials.getUrl(),dbCredentials.getUser(), dbCredentials.getPass());
 
 						break;
 					case 5:
@@ -109,22 +118,22 @@ public class Main {
 				break;
 
 			case 3:
-				InsertToTables.insertToInvoice(dbcredentials.getUrl(), dbcredentials.getUser(),
-						dbcredentials.getPass());
+				InsertToTables.insertToInvoice(dbCredentials.getUrl(), dbCredentials.getUser(),
+						dbCredentials.getPass());
 				menuItems.put("Create New Invoice", menuItems.get("Create New Invoice") + 1);
 				break;
 			case 4:
-				SqlQuries.reportStatistics(dbcredentials.getUrl(), dbcredentials.getUser(), dbcredentials.getPass());
+				SqlQuries.reportStatistics(dbCredentials.getUrl(), dbCredentials.getUser(), dbCredentials.getPass());
 				menuItems.put("Report Statistics", menuItems.get("Report Statistics") + 1);
 				break;
 
 			case 5:
-				SqlQuries.reportAllInvoices(dbcredentials.getUrl(), dbcredentials.getUser(), dbcredentials.getPass());
+				SqlQuries.reportAllInvoices(dbCredentials.getUrl(), dbCredentials.getUser(), dbCredentials.getPass());
 				menuItems.put("Report All Invoices", menuItems.get("Report All Invoices") + 1);
 				break;
 
 			case 6:
-				SqlQuries.searchInvoice(dbcredentials.getUrl(), dbcredentials.getUser(), dbcredentials.getPass());
+				SqlQuries.searchInvoice(dbCredentials.getUrl(), dbCredentials.getUser(), dbCredentials.getPass());
 				menuItems.put("Search Invoice", menuItems.get("Search Invoice") + 1);
 				break;
 			case 7:
