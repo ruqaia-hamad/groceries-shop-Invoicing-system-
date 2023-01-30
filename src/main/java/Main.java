@@ -113,13 +113,17 @@ public class Main {
 				break;
 
 			case 5:
-
+				SqlQuries.reportAllInvoices(dbcredentials.getUrl(), dbcredentials.getUser(),
+						dbcredentials.getPass());
 				break;
 
 			case 6:
-
+				SqlQuries.searchInvoice(dbcredentials.getUrl(), dbcredentials.getUser(),
+						dbcredentials.getPass());
 				break;
 			case 7:
+				CreatingTables.creatingItemTable(dbcredentials.getUrl(), dbcredentials.getUser(),
+						dbcredentials.getPass());
 
 				break;
 			case 8:

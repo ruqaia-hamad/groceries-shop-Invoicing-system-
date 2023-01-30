@@ -84,13 +84,15 @@ public class InsertToTables {
 		System.out.print("Enter the Item Description:");
 		String ItemDescription = br.readLine();
 		System.out.print("Enter Quantity: ");
-		int Quantity = br.read();
+		int Quantity = sc.nextInt();
 		System.out.print("Enter Unit Price: ");
 		double unitPrice = sc.nextDouble();
+		System.out.print("Enter Invoice ID: ");
+		int InvoiceID = sc.nextInt();
 
 		double totalPrice = Quantity * unitPrice;
 
-		String sql = "INSERT INTO  Item (ItemDescription, Quantity,UnitPrice,TotalPrice) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO  Item (ItemDescription, Quantity,UnitPrice,TotalPrice,InvoiceID) VALUES (?,?,?,?,?)";
 
 		Connection con = null;
 		try {
@@ -105,6 +107,7 @@ public class InsertToTables {
 			statement.setInt(2, Quantity);
 			statement.setDouble(3, unitPrice);
 			statement.setDouble(4, totalPrice);
+			statement.setInt(5, InvoiceID);
 			statement.executeUpdate();
 			System.out.println("Inserted Successfly");
 

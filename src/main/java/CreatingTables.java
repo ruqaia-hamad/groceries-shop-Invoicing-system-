@@ -42,9 +42,16 @@ public class CreatingTables {
 
 	public static void creatingItemTable(String url, String user, String pass) {
 
-		String sql = "CREATE TABLE Item (\r\n" + "    ItemID int IDENTITY(1,1) PRIMARY KEY,\r\n"
-				+ "    ItemDescription varchar(255) NOT NULL,\r\n" + "    Quantity int NOT NULL,\r\n"
-				+ "    UnitPrice decimal(18,2) NOT NULL,\r\n" + "    TotalPrice decimal(18,2) NOT NULL\r\n" + ")";
+		String sql = "\r\n"
+				+ "CREATE TABLE Item (\r\n"
+				+ "    ItemID int IDENTITY(1,1) PRIMARY KEY,\r\n"
+				+ "    ItemDescription varchar(255) NOT NULL,\r\n"
+				+ "    Quantity int NOT NULL,\r\n"
+				+ "    UnitPrice decimal(18,2) NOT NULL,\r\n"
+				+ "    TotalPrice decimal(18,2) NOT NULL,  \r\n"
+				+ "	InvoiceID int NOT NULL,\r\n"
+				+ "	FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)\r\n"
+				+ ")";
 
 		Connection con = null;
 
