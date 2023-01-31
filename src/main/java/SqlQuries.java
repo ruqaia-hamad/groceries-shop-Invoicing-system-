@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 public class SqlQuries {
 
-	
-
 	public static void reportStatistics(String url, String user, String pass) throws Throwable {
 
 		String sql = "SELECT COUNT(*) AS NoOfItems,\r\n" + "       (SELECT COUNT(*) FROM Invoice) AS NoOfInvoices,\r\n"
@@ -131,6 +129,8 @@ public class SqlQuries {
 
 	public static Map<String, Integer> initializeMenu() {
 		Map<String, Integer> menuItems = new HashMap<>();
+
+		menuItems.put("Creating Tables", 0);
 		menuItems.put("Shop Settings", 0);
 		menuItems.put("Manage Shop Items", 0);
 		menuItems.put("Create New Invoice", 0);
