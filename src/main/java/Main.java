@@ -205,7 +205,7 @@ public class Main {
 
 				}
 			} catch (InputMismatchException e) {
-				System.out.println("Please enter a valid integer");
+				System.out.println(" Invalid ! Please enter a valid integer");
 				sc.nextLine();
 			}
 		}
