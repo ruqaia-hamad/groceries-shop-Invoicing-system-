@@ -6,8 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
-public class InsertToTables {
-
+public class Invoice {
+	
+	
 	public static void insertToInvoice(String url, String user, String pass) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter Customer ID: ");
@@ -77,76 +78,7 @@ public class InsertToTables {
 		}
 
 	}
-
-	public static void InsertToItem(String url, String user, String pass) throws Exception {
-		Scanner sc = new Scanner(System.in);
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("Enter the Item Description:");
-		String ItemDescription = br.readLine();
-		System.out.print("Enter Quantity: ");
-		int Quantity = sc.nextInt();
-		System.out.print("Enter Unit Price: ");
-		double unitPrice = sc.nextDouble();
-		System.out.print("Enter Invoice ID: ");
-		int InvoiceID = sc.nextInt();
-
-		double totalPrice = Quantity * unitPrice;
-
-		String sql = "INSERT INTO  Item (ItemDescription, Quantity,UnitPrice,TotalPrice,InvoiceID) VALUES (?,?,?,?,?)";
-
-		Connection con = null;
-		try {
-
-			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-
-			DriverManager.registerDriver(driver);
-
-			con = DriverManager.getConnection(url, user, pass);
-			PreparedStatement statement = con.prepareStatement(sql);
-			statement.setString(1, ItemDescription);
-			statement.setInt(2, Quantity);
-			statement.setDouble(3, unitPrice);
-			statement.setDouble(4, totalPrice);
-			statement.setInt(5, InvoiceID);
-			statement.executeUpdate();
-			System.out.println("Inserted Successfly");
-
-		} catch (Exception e) {
-			System.out.println("Got an exception! ");
-			System.out.println(e.getMessage());
-		}
-
-	}
-
-	public static void InsertToInvoiceItem(String url, String user, String pass) throws Exception {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter the Item ID:");
-		int ItemID = sc.nextInt();
-		System.out.print("Enter Invoice ID :");
-		int InvoiceID = sc.nextInt();
-
-		String sql = "INSERT INTO  InvoiceItem (ItemID,InvoiceID) VALUES (?,?)";
-
-		Connection con = null;
-		try {
-
-			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-
-			DriverManager.registerDriver(driver);
-
-			con = DriverManager.getConnection(url, user, pass);
-			PreparedStatement statement = con.prepareStatement(sql);
-			statement.setInt(1, ItemID);
-			statement.setInt(2, InvoiceID);
-			statement.executeUpdate();
-			System.out.println("Inserted Successfly");
-
-		} catch (Exception e) {
-			System.out.println("Got an exception! ");
-			System.out.println(e.getMessage());
-		}
-
-	}
+	
 
 	public static void InsertToShop(String url, String user, String pass) throws Exception {
 
