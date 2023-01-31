@@ -40,40 +40,46 @@ public class Main {
 						for (String x : Menu.CreatingTables()) {
 							System.out.println(x);
 						}
-						int op = sc.nextInt();
+						try {
+							int op = sc.nextInt();
 
-						switch (op) {
-						case 1:
+							switch (op) {
+							case 1:
 
-							CreatingTables.creatingCustomerTable(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
+								CreatingTables.creatingCustomerTable(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
 
-							break;
+								break;
 
-						case 2:
-							CreatingTables.creatingInvoiceHeaderTable(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
-							break;
+							case 2:
+								CreatingTables.creatingInvoiceHeaderTable(dbCredentials.getUrl(),
+										dbCredentials.getUser(), dbCredentials.getPass());
+								break;
 
-						case 3:
+							case 3:
 
-							CreatingTables.creatingItemTable(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
+								CreatingTables.creatingItemTable(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
 
-							break;
-						case 4:
-							CreatingTables.creatingInvoiceTable(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
-							break;
+								break;
+							case 4:
+								CreatingTables.creatingInvoiceTable(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
+								break;
 
-						case 5:
-							CreatingTables.creatingShopTable(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
-						case 6:
+							case 5:
+								CreatingTables.creatingShopTable(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
+							case 6:
 
-							isExitMenuCreatinTables = false;
+								isExitMenuCreatinTables = false;
 
-							break;
+								break;
+							}
+						} catch (InputMismatchException e) {
+							System.out.println(" Invalid ! Please enter a valid integer");
+							sc.nextLine();
+
 						}
 
 					}
@@ -91,32 +97,38 @@ public class Main {
 						for (String x : Menu.shopMenuList()) {
 							System.out.println(x);
 						}
-						int op = sc.nextInt();
+						try {
+							int op = sc.nextInt();
 
-						switch (op) {
-						case 1:
+							switch (op) {
+							case 1:
 
-							Menu.loadData(dbCredentials);
+								Menu.loadData(dbCredentials);
 
-							break;
+								break;
 
-						case 2:
+							case 2:
 
-							Invoice.InsertToShop(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
+								Invoice.InsertToShop(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
 
-							break;
+								break;
 
-						case 3:
+							case 3:
 
-							Invoice.InsertToInvoiceHeader(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
+								Invoice.InsertToInvoiceHeader(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
 
-							break;
-						case 4:
-							isExitMenuShop = false;
+								break;
+							case 4:
+								isExitMenuShop = false;
 
-							break;
+								break;
+							}
+						} catch (InputMismatchException e) {
+							System.out.println(" Invalid ! Please enter a valid integer");
+							sc.nextLine();
+
 						}
 
 					}
@@ -133,6 +145,7 @@ public class Main {
 						for (String x : Menu.itemMenuList()) {
 							System.out.println(x);
 						}
+						try {
 						int op = sc.nextInt();
 
 						switch (op) {
@@ -163,6 +176,10 @@ public class Main {
 							isExitMenuManageShop = false;
 
 							break;
+						}} catch (InputMismatchException e) {
+							System.out.println(" Invalid ! Please enter a valid integer");
+							sc.nextLine();
+
 						}
 
 					}
@@ -199,10 +216,18 @@ public class Main {
 
 					break;
 				case 8:
-					System.out.println("THANK YOU");
-					isExitMenu = false;
+					System.out.println("Are you sure you want to exit? If yes, press 1 or 2 to complete");
+					int ExitAllMenu=sc.nextInt();
+					if(ExitAllMenu==1) {
+						isExitMenu = false;
+						System.out.println("Thank you");
+					}
+					
+					if(ExitAllMenu==2) {
+						isExitMenu = true;
+					}
 					break;
-
+				
 				}
 			} catch (InputMismatchException e) {
 				System.out.println(" Invalid ! Please enter a valid integer");
