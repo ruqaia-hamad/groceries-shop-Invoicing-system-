@@ -4,25 +4,93 @@ import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.List;
 import java.util.Scanner;
 
 public class Invoice {
+	static int customerId;
+	static int invoiceHeaderId;
+	static String invoiceDate;
+	static int totalAmount;
+	static int paidAmount ;
+	static int balance;
+	List<Product> itemsList;
 	
-	
+	public List<Product> getItemsList() {
+		return itemsList;
+	}
+
+	public void setItemsList(List<Product> itemsList) {
+		this.itemsList = itemsList;
+	}
+
+	public static int getCustomerId() {
+		return customerId;
+	}
+
+	public static void setCustomerId(int customerId) {
+		Invoice.customerId = customerId;
+	}
+
+	public static int getInvoiceHeaderId() {
+		return invoiceHeaderId;
+	}
+
+	public static void setInvoiceHeaderId(int invoiceHeaderId) {
+		Invoice.invoiceHeaderId = invoiceHeaderId;
+	}
+
+	public static String getInvoiceDate() {
+		return invoiceDate;
+	}
+
+	public static void setInvoiceDate(String invoiceDate) {
+		Invoice.invoiceDate = invoiceDate;
+	}
+
+	public static int getTotalAmount() {
+		return totalAmount;
+	}
+
+	public static void setTotalAmount(int totalAmount) {
+		Invoice.totalAmount = totalAmount;
+	}
+
+	public static int getPaidAmount() {
+		return paidAmount;
+	}
+
+	public static void setPaidAmount(int paidAmount) {
+		Invoice.paidAmount = paidAmount;
+	}
+
+	public static int getBalance() {
+		return balance;
+	}
+
+	public static void setBalance(int balance) {
+		Invoice.balance = balance;
+	}
+
 	public static void insertToInvoice(String url, String user, String pass) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter Customer ID: ");
 		int customerId = sc.nextInt();
+		setCustomerId(customerId);
 		System.out.print("Enter Invoice Header ID: ");
 		int invoiceHeaderId = sc.nextInt();
+		setInvoiceHeaderId(invoiceHeaderId);
 		System.out.print("Enter Invoice Date (YYYY-MM-DD):");
 		String invoiceDate = sc.next();
+		setInvoiceDate(invoiceDate);
 		System.out.print("Enter Total Amount: ");
 		int totalAmount = sc.nextInt();
+		setTotalAmount(totalAmount);
 		System.out.print("Enter Paid Amount: ");
 		int paidAmount = sc.nextInt();
+		setPaidAmount(paidAmount);
 		int balance = totalAmount - paidAmount;
-
+        setBalance(balance);
 		String sql = "INSERT INTO Invoice (CustomerID, InvoiceHeaderID, InvoiceDate, TotalAmount, PaidAmount, Balance) VALUES (?, ?, ?, ?, ?, ?)";
 
 		Connection con = null;

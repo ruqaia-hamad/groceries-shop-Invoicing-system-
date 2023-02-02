@@ -9,21 +9,69 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Product {
+	static int quantity;
+	static double unitPrice;
+	static int InvoiceID;
+	static double totalPrice;
+	static String itemDescription;
+
+	public static int getQuantity() {
+		return quantity;
+	}
+
+	public static void setQuantity(int quantity) {
+		Product.quantity = quantity;
+	}
+
+	public static double getUnitPrice() {
+		return unitPrice;
+	}
+
+	public static void setUnitPrice(double unitPrice) {
+		Product.unitPrice = unitPrice;
+	}
+
+	public static int getInvoiceID() {
+		return InvoiceID;
+	}
+
+	public static void setInvoiceID(int invoiceID) {
+		InvoiceID = invoiceID;
+	}
+
+	public static double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public static void setTotalPrice(double totalPrice) {
+		Product.totalPrice = totalPrice;
+	}
+
+	public static String getItemDescription() {
+		return itemDescription;
+	}
+
+	public static void setItemDescription(String itemDescription) {
+		Product.itemDescription = itemDescription;
+	}
 
 	public static void InsertToItem(String url, String user, String pass) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("Enter the Item Description:");
 		String ItemDescription = br.readLine();
+		setItemDescription(ItemDescription);
 		System.out.print("Enter Quantity: ");
 		int Quantity = sc.nextInt();
+		setQuantity(Quantity);
 		System.out.print("Enter Unit Price: ");
 		double unitPrice = sc.nextDouble();
+		setUnitPrice(unitPrice);
 		System.out.print("Enter Invoice ID: ");
 		int InvoiceID = sc.nextInt();
-
+		setInvoiceID(InvoiceID);
 		double totalPrice = Quantity * unitPrice;
-
+		setTotalPrice(totalPrice);
 		String sql = "INSERT INTO  Item (ItemDescription, Quantity,UnitPrice,TotalPrice,InvoiceID) VALUES (?,?,?,?,?)";
 
 		Connection con = null;
@@ -49,6 +97,7 @@ public class Product {
 		}
 
 	}
+
 	public static void deleteItem(String url, String user, String pass) throws Throwable {
 
 		String sql = "DELETE FROM Item WHERE id = ?";

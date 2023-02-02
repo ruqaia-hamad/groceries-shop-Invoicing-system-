@@ -1,15 +1,19 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
 
 public class Main {
 
 	public static void main(String[] args) throws Throwable {
 		Scanner sc = new Scanner(System.in);
 		boolean isExitMenu = true;
+		List<Invoice> invoiceList=new ArrayList<>();
+		List<Product> itemsList=new ArrayList<>();
 
 		DatabaseCredentials dbCredentials = new DatabaseCredentials();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -215,7 +219,21 @@ public class Main {
 					}
 
 					break;
-				case 8:
+				case 8 :
+
+					for (Invoice i : invoiceList) {
+					System.out.println("customer ID : "+i.getCustomerId());
+					System.out.println("Invoice Date : "+i.getInvoiceDate());
+					System.out.println("Total Amount : "+i.getTotalAmount());
+					System.out.println("Paid Amount : "+i.getPaidAmount());
+						for (Product p : i.getItemsList()) {
+							System.out.println("Item Description"+ p.getItemDescription());
+							System.out.println("Item Unit Price"+ p.getUnitPrice());
+							System.out.println("Quantity"+ p.getQuantity());
+							System.out.println("Total Price"+ p.getTotalPrice());
+						}}
+					break;
+				case 9:
 					System.out.println("Are you sure you want to exit? If yes, press 1 or 2 to complete");
 					int ExitAllMenu=sc.nextInt();
 					if(ExitAllMenu==1) {

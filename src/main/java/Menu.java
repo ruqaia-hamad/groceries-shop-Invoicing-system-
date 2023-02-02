@@ -17,7 +17,7 @@ public class Menu {
 	public static List<String> superMenuList() {
 		return Arrays.asList("Please Choose Number From Menu:\n","[0]Create Tables ", "[1]Shop Settings ", "[2]Manage Shop Items  ",
 				"[3]Create New Invoice  ", "[4]Report Statistics  ", "[5]Report All Invoices ", "[6]Search Invoice",
-				"[7]Program Statistics ", "[8]EXIT");
+				"[7]Program Statistics ", "[8]Invoice and Items List","[9]EXIT");
 
 	}
 
