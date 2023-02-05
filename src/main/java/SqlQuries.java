@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -140,5 +141,27 @@ public class SqlQuries {
 		menuItems.put("Program Statistics", 0);
 		return menuItems;
 	}
+	public static boolean createTable(String url, String user, String pass, String sql) {
+		Connection con = null;
+		  try {
+		    Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+		    DriverManager.registerDriver(driver);
+		    con = DriverManager.getConnection(url, user, pass);
+		    Statement st = con.createStatement();
+		    int m = st.executeUpdate(sql);
+		    if (m <= 0) {
+		      System.out.println("Created successfully : " + sql);
+		      con.close();
+		      return true;
+		    } else {
+		      System.out.println("creating table failed");
+		      con.close();
+		      return false;
+		    }
+		  } catch (Exception e) {
+		    System.out.println(e);
+		    return false;
+		  }
+		}
 
 }

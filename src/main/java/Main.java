@@ -237,8 +237,9 @@ public class Main {
 					System.out.println("Are you sure you want to exit? If yes, press 1 or 2 to complete");
 					int ExitAllMenu=sc.nextInt();
 					if(ExitAllMenu==1) {
-						isExitMenu = false;
+		
 						System.out.println("Thank you");
+						isExitMenu = false;
 					}
 					
 					if(ExitAllMenu==2) {
