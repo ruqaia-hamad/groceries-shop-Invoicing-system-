@@ -12,10 +12,10 @@ public class Invoice {
 	static int invoiceHeaderId;
 	static String invoiceDate;
 	static int totalAmount;
-	static int paidAmount ;
+	static int paidAmount;
 	static int balance;
 	List<Product> itemsList;
-	
+
 	public List<Product> getItemsList() {
 		return itemsList;
 	}
@@ -90,7 +90,7 @@ public class Invoice {
 		int paidAmount = sc.nextInt();
 		setPaidAmount(paidAmount);
 		int balance = totalAmount - paidAmount;
-        setBalance(balance);
+		setBalance(balance);
 		String sql = "INSERT INTO Invoice (CustomerID, InvoiceHeaderID, InvoiceDate, TotalAmount, PaidAmount, Balance) VALUES (?, ?, ?, ?, ?, ?)";
 
 		Connection con = null;
@@ -146,7 +146,6 @@ public class Invoice {
 		}
 
 	}
-	
 
 	public static void InsertToShop(String url, String user, String pass) throws Exception {
 

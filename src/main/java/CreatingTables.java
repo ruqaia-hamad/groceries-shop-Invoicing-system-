@@ -14,8 +14,6 @@ public class CreatingTables {
 				+ "    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),\r\n"
 				+ "    FOREIGN KEY (InvoiceHeaderID) REFERENCES InvoiceHeader(InvoiceHeaderID))";
 
-
-
 		boolean success = SqlQuries.createTable(url, user, pass, sql);
 		if (success) {
 			System.out.println("Created successfully : " + sql);
@@ -26,18 +24,11 @@ public class CreatingTables {
 
 	public static void creatingItemTable(String url, String user, String pass) {
 
-		String sql = "\r\n"
-				+ "CREATE TABLE Item (\r\n"
-				+ "    ItemID int IDENTITY(1,1) PRIMARY KEY,\r\n"
-				+ "    ItemDescription varchar(255) NOT NULL,\r\n"
-				+ "    Quantity int NOT NULL,\r\n"
-				+ "    UnitPrice decimal(18,2) NOT NULL,\r\n"
-				+ "    TotalPrice decimal(18,2) NOT NULL,  \r\n"
-				+ "	InvoiceID int NOT NULL,\r\n"
-				+ "	FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)\r\n"
+		String sql = "\r\n" + "CREATE TABLE Item (\r\n" + "    ItemID int IDENTITY(1,1) PRIMARY KEY,\r\n"
+				+ "    ItemDescription varchar(255) NOT NULL,\r\n" + "    Quantity int NOT NULL,\r\n"
+				+ "    UnitPrice decimal(18,2) NOT NULL,\r\n" + "    TotalPrice decimal(18,2) NOT NULL,  \r\n"
+				+ "	InvoiceID int NOT NULL,\r\n" + "	FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)\r\n"
 				+ ")";
-
-	
 
 		boolean success = SqlQuries.createTable(url, user, pass, sql);
 		if (success) {
@@ -55,8 +46,6 @@ public class CreatingTables {
 				+ "    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID),\r\n"
 				+ "    FOREIGN KEY (ItemID) REFERENCES Item(ItemID)\r\n" + ")";
 
-	
-
 		boolean success = SqlQuries.createTable(url, user, pass, sql);
 		if (success) {
 			System.out.println("Created successfully : " + sql);
@@ -69,7 +58,7 @@ public class CreatingTables {
 
 		String sql = "CREATE TABLE Customer (\r\n" + "    CustomerID int IDENTITY(1,1) PRIMARY KEY,\r\n"
 				+ "    CustomerName varchar(255) NOT NULL,\r\n" + "    PhoneNumber varchar(20) NOT NULL\r\n" + ")";
-	
+
 		boolean success = SqlQuries.createTable(url, user, pass, sql);
 		if (success) {
 			System.out.println("Created successfully : " + sql);

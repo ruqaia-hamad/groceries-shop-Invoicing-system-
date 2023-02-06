@@ -6,14 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-
 public class Main {
 
 	public static void main(String[] args) throws Throwable {
 		Scanner sc = new Scanner(System.in);
 		boolean isExitMenu = true;
-		List<Invoice> invoiceList=new ArrayList<>();
-		List<Product> itemsList=new ArrayList<>();
+		List<Invoice> invoiceList = new ArrayList<>();
+		List<Product> itemsList = new ArrayList<>();
 
 		DatabaseCredentials dbCredentials = new DatabaseCredentials();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -150,37 +149,38 @@ public class Main {
 							System.out.println(x);
 						}
 						try {
-						int op = sc.nextInt();
+							int op = sc.nextInt();
 
-						switch (op) {
+							switch (op) {
 
-						case 1:
+							case 1:
 
-							Product.InsertToItem(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
-							break;
-						case 2:
+								Product.InsertToItem(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
+								break;
+							case 2:
 
-							Product.updateItemPrice(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
-							break;
-						case 3:
+								Product.updateItemPrice(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
+								break;
+							case 3:
 
-							Product.updateItemPrice(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
+								Product.updateItemPrice(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
 
-							break;
-						case 4:
+								break;
+							case 4:
 
-							Product.reportItem(dbCredentials.getUrl(), dbCredentials.getUser(),
-									dbCredentials.getPass());
+								Product.reportItem(dbCredentials.getUrl(), dbCredentials.getUser(),
+										dbCredentials.getPass());
 
-							break;
-						case 5:
-							isExitMenuManageShop = false;
+								break;
+							case 5:
+								isExitMenuManageShop = false;
 
-							break;
-						}} catch (InputMismatchException e) {
+								break;
+							}
+						} catch (InputMismatchException e) {
 							System.out.println(" Invalid ! Please enter a valid integer");
 							sc.nextLine();
 
@@ -219,34 +219,35 @@ public class Main {
 					}
 
 					break;
-				case 8 :
+				case 8:
 
 					for (Invoice i : invoiceList) {
-					System.out.println("customer ID : "+i.getCustomerId());
-					System.out.println("Invoice Date : "+i.getInvoiceDate());
-					System.out.println("Total Amount : "+i.getTotalAmount());
-					System.out.println("Paid Amount : "+i.getPaidAmount());
+						System.out.println("customer ID : " + i.getCustomerId());
+						System.out.println("Invoice Date : " + i.getInvoiceDate());
+						System.out.println("Total Amount : " + i.getTotalAmount());
+						System.out.println("Paid Amount : " + i.getPaidAmount());
 						for (Product p : i.getItemsList()) {
-							System.out.println("Item Description"+ p.getItemDescription());
-							System.out.println("Item Unit Price"+ p.getUnitPrice());
-							System.out.println("Quantity"+ p.getQuantity());
-							System.out.println("Total Price"+ p.getTotalPrice());
-						}}
+							System.out.println("Item Description" + p.getItemDescription());
+							System.out.println("Item Unit Price" + p.getUnitPrice());
+							System.out.println("Quantity" + p.getQuantity());
+							System.out.println("Total Price" + p.getTotalPrice());
+						}
+					}
 					break;
 				case 9:
 					System.out.println("Are you sure you want to exit? If yes, press 1 or 2 to complete");
-					int ExitAllMenu=sc.nextInt();
-					if(ExitAllMenu==1) {
-		
+					int ExitAllMenu = sc.nextInt();
+					if (ExitAllMenu == 1) {
+
 						System.out.println("Thank you");
 						isExitMenu = false;
 					}
-					
-					if(ExitAllMenu==2) {
+
+					if (ExitAllMenu == 2) {
 						isExitMenu = true;
 					}
 					break;
-				
+
 				}
 			} catch (InputMismatchException e) {
 				System.out.println(" Invalid ! Please enter a valid integer");

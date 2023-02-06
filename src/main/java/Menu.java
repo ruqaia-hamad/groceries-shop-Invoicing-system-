@@ -7,17 +7,18 @@ import java.util.Scanner;
 
 public class Menu {
 
-	
-	
 	public static List<String> CreatingTables() {
-		return Arrays.asList("Please Choose Number From Menu:\n","[1]Create Customer Table ", "[2]Create Invoice Header Table", "[3]Create Items Table ",
-				"[4]Create Invoice Table ", "[5]Create Shop table ", "[6]EXIT");
+		return Arrays.asList("Please Choose Number From Menu:\n", "[1]Create Customer Table ",
+				"[2]Create Invoice Header Table", "[3]Create Items Table ", "[4]Create Invoice Table ",
+				"[5]Create Shop table ", "[6]EXIT");
 
-	} 
+	}
+
 	public static List<String> superMenuList() {
-		return Arrays.asList("Please Choose Number From Menu:\n","[0]Create Tables ", "[1]Shop Settings ", "[2]Manage Shop Items  ",
-				"[3]Create New Invoice  ", "[4]Report Statistics  ", "[5]Report All Invoices ", "[6]Search Invoice",
-				"[7]Program Statistics ", "[8]Invoice and Items List","[9]EXIT");
+		return Arrays.asList("Please Choose Number From Menu:\n", "[0]Create Tables ", "[1]Shop Settings ",
+				"[2]Manage Shop Items  ", "[3]Create New Invoice  ", "[4]Report Statistics  ",
+				"[5]Report All Invoices ", "[6]Search Invoice", "[7]Program Statistics ", "[8]Invoice and Items List",
+				"[9]EXIT");
 
 	}
 
@@ -41,8 +42,7 @@ public class Menu {
 		System.out.print("3- Invoice Table:");
 		int choose = sc.nextInt();
 		if (choose == 1) {
-			Invoice.InsertToCustomer(dbCredentials.getUrl(), dbCredentials.getUser(),
-					dbCredentials.getPass());
+			Invoice.InsertToCustomer(dbCredentials.getUrl(), dbCredentials.getUser(), dbCredentials.getPass());
 		}
 		if (choose == 2) {
 			Product.InsertToItem(dbCredentials.getUrl(), dbCredentials.getUser(), dbCredentials.getPass());
